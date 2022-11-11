@@ -12,11 +12,19 @@ function MessageInput() {
     console.log(messageInputValue);
   };
 
+  const handleKeyDown = (event) => {
+    const keyCodeEnter = 13;
+    if (event.keyCode === keyCodeEnter) {
+      console.log(messageInputValue);
+    }
+  };
+
   return (
     <div>
       <input
         type="text"
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         value={messageInputValue}
         placeholder={placeholder}
       />
