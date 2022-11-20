@@ -4,7 +4,7 @@ import MessageInput from "./MessageInput";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Conversation></Conversation>
       <MessageInput></MessageInput>
     </div>

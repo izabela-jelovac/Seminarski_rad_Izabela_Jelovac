@@ -10,25 +10,32 @@ function MessageInput() {
 
   const handleClick = (event) => {
     console.log(messageInputValue);
+    setMessageInputValue("");
   };
 
   const handleKeyDown = (event) => {
     const keyCodeEnter = 13;
     if (event.keyCode === keyCodeEnter) {
       console.log(messageInputValue);
+      setMessageInputValue("");
     }
   };
 
   return (
-    <div>
+    <div className="input-send">
       <input
+        className="input-message rounded-border-shadow"
         type="text"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         value={messageInputValue}
         placeholder={placeholder}
       />
-      <button type="button" onClick={handleClick}>
+      <button
+        className="button-send rounded-border-shadow"
+        type="button"
+        onClick={handleClick}
+      >
         Send
       </button>
     </div>

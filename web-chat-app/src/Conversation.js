@@ -3,7 +3,7 @@ import SentMessage from "./SentMessage";
 
 function Conversation() {
   return (
-    <div>
+    <div className="flex-container">
       <SentMessage></SentMessage>
       <ReceivedMessage></ReceivedMessage>
       <ReceivedMessage></ReceivedMessage>
