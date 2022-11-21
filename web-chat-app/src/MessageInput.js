@@ -1,22 +1,21 @@
 import { useState } from "react";
 
-function MessageInput() {
+function MessageInput(props) {
   const placeholder = "Enter your message and press ENTER";
   const [messageInputValue, setMessageInputValue] = useState("");
-
   const handleChange = (event) => {
     setMessageInputValue(event.target.value);
   };
 
   const handleClick = (event) => {
-    console.log(messageInputValue);
+    props.message(messageInputValue);
     setMessageInputValue("");
   };
 
   const handleKeyDown = (event) => {
     const keyCodeEnter = 13;
     if (event.keyCode === keyCodeEnter) {
-      console.log(messageInputValue);
+      props.message(messageInputValue);
       setMessageInputValue("");
     }
   };

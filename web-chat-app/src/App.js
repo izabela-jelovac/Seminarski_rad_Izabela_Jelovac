@@ -10,12 +10,13 @@ function App() {
     if (error) {
       return console.error(error);
     }
+  });
+  const sendMessage = (textMessage) => {
     drone.publish({
       room: "my-room",
-      message: { message: "Hello world!", score: 42 },
+      message: { message: textMessage, score: 42 },
     });
-  });
-
+  };
   const room = drone.subscribe("my-room");
   room.on("open", (error) => {
     if (error) {
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="app">
       <Conversation></Conversation>
-      <MessageInput></MessageInput>
+      <MessageInput message={sendMessage}></MessageInput>
     </div>
   );
 }
