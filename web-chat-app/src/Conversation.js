@@ -1,14 +1,13 @@
 import ReceivedMessage from "./ReceivedMessage";
-import SentMessage from "./SentMessage";
 
-function Conversation() {
+function Conversation(props) {
   return (
-    <div className="flex-container">
-      <SentMessage></SentMessage>
-      <ReceivedMessage></ReceivedMessage>
-      <ReceivedMessage></ReceivedMessage>
-      <ReceivedMessage></ReceivedMessage>
-      <SentMessage></SentMessage>
+    <div>
+      <div className="flex-container">
+        {props.allMessages.map((message) => {
+          return <ReceivedMessage></ReceivedMessage>;
+        })}
+      </div>
     </div>
   );
 }

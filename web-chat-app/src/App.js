@@ -35,7 +35,7 @@ function App() {
   drone.on("error", (error) => console.error(error));
   return (
     <div className="app">
-      <Conversation></Conversation>
+      <Conversation allMessages={messages}></Conversation>
       <MessageInput message={sendMessage}></MessageInput>
     </div>
   );
