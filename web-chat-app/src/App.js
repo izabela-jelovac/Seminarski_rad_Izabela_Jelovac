@@ -2,8 +2,11 @@
 import Conversation from "./Conversation";
 import "./App.css";
 import MessageInput from "./MessageInput";
+import React, { useState } from "react";
 
 function App() {
+  const [messages, setMessages] = useState([]);
+
   const drone = new Scaledrone("7Sl4zMQ23XoLFQRZ");
 
   drone.on("open", (error) => {
@@ -25,7 +28,9 @@ function App() {
       console.log("Connected to room");
     }
   });
-  room.on("message", (message) => console.log("Received message:", message));
+  room.on("message", (message) => {
+    setMessages([...messages, message]);
+  });
 
   drone.on("error", (error) => console.error(error));
   return (
