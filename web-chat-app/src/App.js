@@ -41,7 +41,10 @@ function App() {
 
   return (
     <div className="app">
-      <Conversation allMessages={messages}></Conversation>
+      <Conversation
+        ownClientId={drone?.clientId}
+        allMessages={messages}
+      ></Conversation>
       <MessageInput message={sendMessage}></MessageInput>
     </div>
   );
