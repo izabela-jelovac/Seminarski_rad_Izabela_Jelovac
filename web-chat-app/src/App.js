@@ -2,37 +2,43 @@
 import Conversation from "./Conversation";
 import "./App.css";
 import MessageInput from "./MessageInput";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [drone, setDrone] = useState(null);
 
-  const drone = new Scaledrone("7Sl4zMQ23XoLFQRZ");
+  useEffect(() => {
+    setDrone(new Scaledrone("7Sl4zMQ23XoLFQRZ"));
+  }, []);
 
-  drone.on("open", (error) => {
+  drone?.on("open", (error) => {
     if (error) {
       return console.error(error);
     }
   });
-  const sendMessage = (textMessage) => {
-    drone.publish({
-      room: "my-room",
-      message: { message: textMessage, score: 42 },
-    });
-  };
-  const room = drone.subscribe("my-room");
-  room.on("open", (error) => {
+
+  const room = drone?.subscribe("my-room");
+  room?.on("open", (error) => {
     if (error) {
       console.error(error);
     } else {
       console.log("Connected to room");
     }
   });
-  room.on("message", (message) => {
+  room?.on("message", (message) => {
     setMessages([...messages, message]);
   });
 
-  drone.on("error", (error) => console.error(error));
+  const sendMessage = (textMessage) => {
+    drone?.publish({
+      room: "my-room",
+      message: { message: textMessage, score: 42 },
+    });
+  };
+
+  drone?.on("error", (error) => console.error(error));
+
   return (
     <div className="app">
       <Conversation allMessages={messages}></Conversation>
