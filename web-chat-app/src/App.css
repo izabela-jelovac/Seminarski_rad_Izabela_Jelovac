@@ -27,6 +27,7 @@
 .flex-item-received {
   background-color: rgb(128, 231, 243);
   max-width: 70%;
+  width: fit-content;
 }
 .flex-item-sent {
   background-color: rgba(255, 0, 162, 0.555);
