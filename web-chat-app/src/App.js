@@ -61,13 +61,19 @@ function App() {
   });
 
   const sendMessage = (textMessage) => {
-    drone?.publish({
-      room: "my-room",
-      message: {
-        message: textMessage,
-        userData: userData,
-      },
-    });
+    if (textMessage === "") {
+      alert(
+        "Please write your message and press ENTER or click button send to send it."
+      );
+    } else {
+      drone?.publish({
+        room: "my-room",
+        message: {
+          message: textMessage,
+          userData: userData,
+        },
+      });
+    }
   };
 
   drone?.on("error", (error) => console.error(error));
