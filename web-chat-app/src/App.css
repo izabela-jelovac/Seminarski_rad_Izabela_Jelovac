@@ -11,7 +11,6 @@
 .flex-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   height: calc(100vh - 55px);
   overflow: auto;
 }
